@@ -1,13 +1,13 @@
 generated: 08-16-2026 14:00
-last_updated: 08-16-2026 15:00
+last_updated: 08-16-2026 17:34
 project: Almanéa
 project_key: NOKEY
 tracking_system: file-system
 story_location: /Users/julie/Projects/_bmad-output/implementation-artifacts
 development_status:
-  epic-1: backlog
-  1-1-implémenter-provideradapter-pour-atmo-france: ready-for-dev
-  1-2-implémenter-provideradapter-pour-rte: backlog
+  epic-1: in-progress
+  1-1-implémenter-provideradapter-pour-atmo-france: done
+  1-2-implémenter-provideradapter-pour-rte: ready-for-dev
   1-3-implémenter-provideradapter-pour-hub-eau: backlog
   1-4-implémenter-provideradapter-pour-openstreetmap: backlog
   1-5-implémenter-le-cache-redis: backlog

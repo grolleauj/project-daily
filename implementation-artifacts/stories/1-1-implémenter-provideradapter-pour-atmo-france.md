@@ -6,7 +6,7 @@ story_type: backend
 priority: high
 estimation: M
 dependencies: []
-status: ready-for-dev
+status: done
 created: 2026-08-16
 updated: 2026-08-16
 ---
