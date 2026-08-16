@@ -1,0 +1,64 @@
+generated: 08-16-2026 14:00
+last_updated: 08-16-2026 15:00
+project: Almanéa
+project_key: NOKEY
+tracking_system: file-system
+story_location: /Users/julie/Projects/_bmad-output/implementation-artifacts
+development_status:
+  epic-1: backlog
+  1-1-implémenter-provideradapter-pour-atmo-france: ready-for-dev
+  1-2-implémenter-provideradapter-pour-rte: backlog
+  1-3-implémenter-provideradapter-pour-hub-eau: backlog
+  1-4-implémenter-provideradapter-pour-openstreetmap: backlog
+  1-5-implémenter-le-cache-redis: backlog
+  1-6-construire-unifiedcontext: backlog
+  1-7-gérer-les-erreurs-des-providers: backlog
+  epic-1-retrospective: optional
+  epic-2: backlog
+  2-1-implémenter-rule-engine: backlog
+  2-2-implémenter-le-scoring: backlog
+  2-3-classer-les-recommandations: backlog
+  2-4-filtrer-les-recommandations-invalides: backlog
+  2-5-générer-des-recommandations-déterministes: backlog
+  epic-2-retrospective: optional
+  epic-3: backlog
+  3-1-stocker-les-preuves-scientifiques: backlog
+  3-2-associer-les-preuves-aux-recommandations: backlog
+  3-3-mettre-à-jour-les-preuves-scientifiques: backlog
+  epic-3-retrospective: optional
+  epic-4: backlog
+  4-1-implémenter-llmprovider: backlog
+  4-2-générer-des-explications-textuelles: backlog
+  4-3-implémenter-le-fallback-déterministe: backlog
+  epic-4-retrospective: optional
+  epic-5: backlog
+  5-1-créer-et-mettre-à-jour-le-profil-utilisateur: backlog
+  5-2-gérer-les-préférences-utilisateur: backlog
+  5-3-consulter-l-historique-des-recommandations: backlog
+  5-4-donner-un-feedback-sur-les-recommandations: backlog
+  epic-5-retrospective: optional
+  epic-6: backlog
+  6-1-système-de-points: backlog
+  6-2-suivi-des-progrès: backlog
+  6-3-journal-écologique: backlog
+  6-4-débloquer-des-badges: backlog
+  6-5-mécanismes-anti-triche: backlog
+  6-6-récompenses-personnalisables-par-les-collectivités: backlog
+  6-7-échange-de-points-contre-des-récompenses: backlog
+  6-8-personnalisation-des-règles-de-points: backlog
+  6-9-gestion-des-récompenses: backlog
+  6-10-notifications-pour-les-récompenses: backlog
+  epic-6-retrospective: optional
+  epic-7: backlog
+  7-1-notifications-pour-les-opportunités-temporaires: backlog
+  7-2-alertes-pour-les-conditions-critiques: backlog
+  7-3-gérer-les-préférences-de-notification: backlog
+  epic-7-retrospective: optional
+  epic-8: backlog
+  8-1-créer-le-layout-mobile-first: backlog
+  8-2-afficher-le-dashboard-aujourd-hui: backlog
+  8-3-afficher-les-cartes-de-recommandations: backlog
+  8-4-afficher-l-onglet-explorer: backlog
+  8-5-afficher-l-onglet-impact: backlog
+  8-6-afficher-l-onglet-profil: backlog
+  epic-8-retrospective: optional
