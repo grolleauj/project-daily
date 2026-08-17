@@ -1,5 +1,5 @@
 generated: 08-16-2026 14:00
-last_updated: 08-17-2026 23:00
+last_updated: 08-17-2026 17:30
 project: Almanéa
 project_key: NOKEY
 tracking_system: file-system
@@ -23,28 +23,28 @@ development_status:
   2-5-générer-des-recommandations-déterministes: done
   epic-2-retrospective: optional
 
-  epic-3: backlog
-  3-1-stocker-les-preuves-scientifiques: in-progress
-  3-2-associer-les-preuves-aux-recommandations: backlog
-  3-3-mettre-à-jour-les-preuves-scientifiques: backlog
+  epic-3: done
+  3-1-stocker-les-preuves-scientifiques: done
+  3-2-associer-les-preuves-aux-recommandations: done
+  3-3-mettre-à-jour-les-preuves-scientifiques: done
   epic-3-retrospective: optional
 
-  epic-4: backlog
-  4-1-implémenter-llmprovider: backlog
-  4-2-générer-des-explications-textuelles: backlog
-  4-3-implémenter-le-fallback-déterministe: backlog
+  epic-4: done
+  4-1-implémenter-llmprovider: done
+  4-2-générer-des-explications-textuelles: done
+  4-3-implémenter-le-fallback-déterministe: done
   epic-4-retrospective: optional
 
-  epic-5: backlog
-  5-1-créer-et-mettre-à-jour-le-profil-utilisateur: backlog
-  5-2-gérer-les-préférences-utilisateur: backlog
-  5-3-consulter-l-historique-des-recommandations: backlog
-  5-4-donner-un-feedback-sur-les-recommandations: backlog
+  epic-5: done
+  5-1-créer-et-mettre-à-jour-le-profil-utilisateur: done
+  5-2-gérer-les-préférences-utilisateur: done
+  5-3-consulter-l-historique-des-recommandations: done
+  5-4-donner-un-feedback-sur-les-recommandations: done
   epic-5-retrospective: optional
 
-  epic-6: backlog
-  6-1-système-de-points: backlog
-  6-2-suivi-des-progrès: backlog
+  epic-6: in_progress
+  6-1-système-de-points: done
+  6-2-suivi-des-progrès: done
   6-3-journal-écologique: backlog
   6-4-débloquer-des-badges: backlog
   6-5-mécanismes-anti-triche: backlog
