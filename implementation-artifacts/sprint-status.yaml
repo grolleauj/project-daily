@@ -1,5 +1,5 @@
 generated: 08-16-2026 14:00
-last_updated: 08-17-2026 17:30
+last_updated: 08-17-2026 18:00
 project: Almanéa
 project_key: NOKEY
 tracking_system: file-system
@@ -42,23 +42,23 @@ development_status:
   5-4-donner-un-feedback-sur-les-recommandations: done
   epic-5-retrospective: optional
 
-   epic-6: done
-   6-1-système-de-points: done
-   6-2-suivi-des-progrès: done
-   6-3-journal-écologique: done
-   6-4-débloquer-des-badges: done
-   6-5-mécanismes-anti-triche: done
-   6-6-récompenses-personnalisables-par-les-collectivités: done
-   6-7-échange-de-points-contre-des-récompenses: done
-   6-8-personnalisation-des-règles-de-points: done
-   6-9-gestion-des-récompenses: done
-   6-10-notifications-pour-les-récompenses: done
+  epic-6: done
+  6-1-système-de-points: done
+  6-2-suivi-des-progrès: done
+  6-3-journal-écologique: done
+  6-4-débloquer-des-badges: done
+  6-5-mécanismes-anti-triche: done
+  6-6-récompenses-personnalisables-par-les-collectivités: done
+  6-7-échange-de-points-contre-des-récompenses: done
+  6-8-personnalisation-des-règles-de-points: done
+  6-9-gestion-des-récompenses: done
+  6-10-notifications-pour-les-récompenses: done
   epic-6-retrospective: optional
 
-  epic-7: backlog
+  epic-7: in-progress
   7-1-notifications-pour-les-opportunités-temporaires: backlog
   7-2-alertes-pour-les-conditions-critiques: backlog
-  7-3-gérer-les-préférences-de-notification: backlog
+  7-3-gérer-les-préférences-de-notification: in-progress
   epic-7-retrospective: optional
 
   epic-8: backlog
