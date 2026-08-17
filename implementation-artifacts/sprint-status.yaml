@@ -42,11 +42,11 @@ development_status:
   5-4-donner-un-feedback-sur-les-recommandations: done
   epic-5-retrospective: optional
 
-  epic-6: in_progress
-  6-1-système-de-points: done
-  6-2-suivi-des-progrès: done
-  6-3-journal-écologique: backlog
-  6-4-débloquer-des-badges: backlog
+   epic-6: in_progress
+   6-1-système-de-points: done
+   6-2-suivi-des-progrès: done
+   6-3-journal-écologique: done
+   6-4-débloquer-des-badges: done
   6-5-mécanismes-anti-triche: backlog
   6-6-récompenses-personnalisables-par-les-collectivités: backlog
   6-7-échange-de-points-contre-des-récompenses: backlog
