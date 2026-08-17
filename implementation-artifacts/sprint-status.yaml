@@ -1,5 +1,5 @@
 generated: 08-16-2026 14:00
-last_updated: 08-17-2026 18:00
+last_updated: 08-17-2026 21:30
 project: Almanéa
 project_key: NOKEY
 tracking_system: file-system
@@ -17,10 +17,10 @@ development_status:
 
   epic-2: in-progress
   2-1-implémenter-rule-engine: done
-  2-2-implémenter-le-scoring: backlog
-  2-3-classer-les-recommandations: ready-for-dev
-  2-4-filtrer-les-recommandations-invalides: backlog
-  2-5-générer-des-recommandations-déterministes: backlog
+  2-2-implémenter-le-scoring: done
+  2-3-classer-les-recommandations: done
+  2-4-filtrer-les-recommandations-invalides: done
+  2-5-générer-des-recommandations-déterministes: in-progress
   epic-2-retrospective: optional
 
   epic-3: backlog
