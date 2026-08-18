@@ -56,9 +56,9 @@ development_status:
   epic-6-retrospective: optional
 
   epic-7: in-progress
-  7-1-notifications-pour-les-opportunités-temporaires: backlog
+  7-1-notifications-pour-les-opportunités-temporaires: in-progress
   7-2-alertes-pour-les-conditions-critiques: backlog
-  7-3-gérer-les-préférences-de-notification: in-progress
+  7-3-gérer-les-préférences-de-notification: done
   epic-7-retrospective: optional
 
   epic-8: backlog

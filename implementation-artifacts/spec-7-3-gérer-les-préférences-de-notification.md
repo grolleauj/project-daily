@@ -2,7 +2,7 @@
 title: '7-3-gérer-les-préférences-de-notification'
 type: 'feature'
 created: '08-17-2026'
-status: 'in-progress'
+status: 'done'
 review_loop_iteration: 0
 context: []
 baseline_commit: NO_VCS
