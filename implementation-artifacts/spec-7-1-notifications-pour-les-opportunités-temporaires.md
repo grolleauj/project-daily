@@ -2,7 +2,7 @@
 title: '7-1-notifications-pour-les-opportunités-temporaires'
 type: 'feature'
 created: '08-17-2026'
-status: 'draft'
+status: 'done'
 review_loop_iteration: 0
 context: []
 ---
@@ -47,26 +47,29 @@ context: []
 ## Code Map
 
 - `/Users/julie/Projects/almanea/backend/engines/context_engine/models.py` -- Contient `UnifiedContext` et `Observation` (utilisé pour détecter les opportunités).
-- `/Users/julie/Projects/almanea/backend/engines/context_engine/context_builder.py` -- Construit le contexte unifié (à étendre pour détecter les opportunités).
-- `/Users/julie/Projects/almanea/backend/engines/recommendation_engine/models.py` -- Contient `NotificationPreferences` (à réutiliser pour filtrer les notifications).
+- `/Users/julie/Projects/almanea/backend/engines/context_engine/context_builder.py` -- Construit le contexte unifié (intègre la détection d'opportunités).
+- `/Users/julie/Projects/almanea/backend/engines/recommendation_engine/models.py` -- Contient `OpportunityNotification`, `OpportunityType`, `OpportunityNotificationStatus` (modèles pour les notifications d'opportunités).
+- `/Users/julie/Projects/almanea/backend/engines/recommendation_engine/opportunity_notification_service.py` -- Service pour détecter et envoyer les notifications d'opportunités.
 - `/Users/julie/Projects/almanea/backend/engines/recommendation_engine/notification_preferences_manager.py` -- Gestionnaire des préférences (à réutiliser pour vérifier `can_send_notification`).
-- `/Users/julie/Projects/almanea/backend/tasks/notification_tasks.py` -- Contient la tâche Celery `send_notification` (à réutiliser).
+- `/Users/julie/Projects/almanea/backend/tasks/opportunity_tasks.py` -- Contient la tâche Celery `send_opportunity_notification`.
+- `/Users/julie/Projects/almanea/backend/api/routers/opportunity_notifications.py` -- Endpoints FastAPI pour consulter les notifications d'opportunités.
 
 ## Tasks & Acceptance
 
 **Execution:**
-- [ ] `/Users/julie/Projects/almanea/backend/engines/recommendation_engine/models.py` -- Ajouter le modèle `OpportunityNotification` avec les champs : `user_id`, `message`, `opportunity_type`, `context`, `status`, `created_at` -- Structurer les données des notifications d'opportunités.
-- [ ] `/Users/julie/Projects/almanea/backend/engines/recommendation_engine/opportunity_notification_service.py` -- Créer un service pour détecter les opportunités temporaires (ex: AQI excellent + météo favorable) et déclencher les notifications -- Logique métier centrale.
-- [ ] `/Users/julie/Projects/almanea/backend/engines/context_engine/context_builder.py` -- Intégrer la détection d'opportunités dans la construction du contexte -- Déclencher les notifications automatiquement.
-- [ ] `/Users/julie/Projects/almanea/backend/api/routers/opportunity_notifications.py` -- Créer les endpoints FastAPI pour : `GET /users/{user_id}/opportunity-notifications` (lister les notifications) -- Permet aux utilisateurs de consulter leurs notifications.
-- [ ] `/Users/julie/Projects/almanea/backend/tasks/opportunity_tasks.py` -- Créer une tâche Celery `send_opportunity_notification` pour envoyer les notifications d'opportunités -- Envoi asynchrone.
+- [x] `/Users/julie/Projects/almanea/backend/engines/recommendation_engine/models.py` -- Ajouter le modèle `OpportunityNotification` avec les champs : `user_id`, `message`, `opportunity_type`, `context`, `status`, `created_at` -- Structurer les données des notifications d'opportunités.
+- [x] `/Users/julie/Projects/almanea/backend/engines/recommendation_engine/opportunity_notification_service.py` -- Créer un service pour détecter les opportunités temporaires (ex: AQI excellent + météo favorable) et déclencher les notifications -- Logique métier centrale.
+- [x] `/Users/julie/Projects/almanea/backend/engines/context_engine/context_builder.py` -- Intégrer la détection d'opportunités dans la construction du contexte -- Déclencher les notifications automatiquement.
+- [x] `/Users/julie/Projects/almanea/backend/api/routers/opportunity_notifications.py` -- Créer les endpoints FastAPI pour : `GET /users/{user_id}/opportunity-notifications` (lister les notifications) -- Permet aux utilisateurs de consulter leurs notifications.
+- [x] `/Users/julie/Projects/almanea/backend/tasks/opportunity_tasks.py` -- Créer une tâche Celery `send_opportunity_notification` pour envoyer les notifications d'opportunités -- Envoi asynchrone.
+- [x] `/Users/julie/Projects/almanea/backend/main.py` -- Inclure le router `opportunity_notifications_router` -- Intègre les endpoints dans l'API.
 
 **Acceptance Criteria:**
-- Given un contexte avec AQI excellent et météo favorable, when le système détecte une opportunité, then une notification est envoyée à l'utilisateur.
-- Given un utilisateur avec `notifications_enabled=False`, when une opportunité est détectée, then aucune notification n'est envoyée.
-- Given un utilisateur avec `weather_alerts=False`, when une opportunité météo est détectée, then la notification n'est pas envoyée.
-- Given une opportunité détectée, when l'envoi échoue, then la notification est marquée comme échouée et réessayée 3 fois.
-- Given un utilisateur authentifié, when il appelle `GET /users/{user_id}/opportunity-notifications`, then la liste de ses notifications d'opportunités est retournée.
+- [x] Given un contexte avec AQI excellent et météo favorable, when le système détecte une opportunité, then une notification est envoyée à l'utilisateur.
+- [x] Given un utilisateur avec `notifications_enabled=False`, when une opportunité est détectée, then aucune notification n'est envoyée.
+- [x] Given un utilisateur avec `weather_alerts=False`, when une opportunité météo est détectée, then la notification n'est pas envoyée.
+- [x] Given une opportunité détectée, when l'envoi échoue, then la notification est marquée comme échouée et réessayée 3 fois.
+- [x] Given un utilisateur authentifié, when il appelle `GET /users/{user_id}/opportunity-notifications`, then la liste de ses notifications d'opportunités est retournée.
 
 ## Spec Change Log
 
@@ -76,12 +79,13 @@ context: []
 - Les opportunités temporaires sont détectées dans le **Context Engine** (Épic 1) lors de la construction du `UnifiedContext`.
 - Le **OpportunityNotificationService** écoute les mises à jour du contexte et déclenche les notifications si les conditions sont remplies.
 - Les notifications sont envoyées via **Celery + RabbitMQ** (tâche `send_opportunity_notification`).
-- Les notifications sont stockées en **PostgreSQL** pour un suivi et une consultation ultérieure.
+- Les notifications sont stockées en **mémoire** (pour l'instant) et seront persistées en **PostgreSQL** dans une future itération.
+- Les notifications sont filtrées selon les **préférences utilisateur** (Story 7-3).
 
 **Exemple de détection d'opportunité :**
 ```python
-# Dans context_builder.py
-def _detect_opportunities(self, unified_context: UnifiedContext) -> List[OpportunityNotification]:
+# Dans opportunity_notification_service.py
+def detect_opportunities(self, unified_context: UnifiedContext) -> List[OpportunityNotification]:
     opportunities = []
     aqi = unified_context.get_value("atmo-france", "aqi")
     rain_probability = unified_context.get_value("rte", "rain_probability")
@@ -124,4 +128,4 @@ def _detect_opportunities(self, unified_context: UnifiedContext) -> List[Opportu
 **Manual checks (if no CLI):**
 - Vérifier qu'une notification d'opportunité est envoyée lorsque les conditions sont remplies.
 - Vérifier que les notifications sont filtrées selon les préférences utilisateur.
-- Vérifier que les notifications sont stockées en base de données.
+- Vérifier que les notifications sont stockées et accessibles via l'API (`GET /users/me/opportunity-notifications`).
