@@ -37,7 +37,7 @@ baseline_commit: NO_VCS
 
 | Scenario | Input / State | Expected Output / Behavior | Error Handling |
 |----------|--------------|---------------------------|----------------|
-| **Récupération des préférences** | Utilisateur authentifié avec `user_id` valide | Retourne les préférences de notification de l'utilisateur | 404 si aucune préférence n'existe |
+| **Récupération des préférences** | Utilisateur authentifié | Retourne les préférences de notification de l'utilisateur | 404 si aucune préférence n'existe |
 | **Mise à jour des préférences** | Utilisateur authentifié + payload valide | Met à jour les préférences en base de données | 400 si le payload est invalide |
 | **Préférences par défaut** | Nouveau utilisateur sans préférences | Crée des préférences par défaut (ex: notifications activées, canaux email) | Aucune erreur |
 | **Désactivation des notifications** | Utilisateur met `notifications_enabled=False` | Aucune notification n'est envoyée à cet utilisateur | Aucune notification envoyée |
@@ -61,11 +61,11 @@ baseline_commit: NO_VCS
 - [ ] `/Users/julie/Projects/almanea/backend/engines/recommendation_engine/user_profile_manager.py` -- Étendre pour intégrer `NotificationPreferences` dans `UserProfile` -- Permet de lier les préférences à un utilisateur.
 - [ ] `/Users/julie/Projects/almanea/backend/core/config.py` -- Ajouter les configurations pour RabbitMQ et Celery -- Nécessaire pour l'envoi asynchrone de notifications.
 - [ ] `/Users/julie/Projects/almanea/backend/engines/context_engine/context_builder.py` -- Intégrer le filtrage des alertes en fonction des préférences utilisateur -- Garantit que seules les alertes pertinentes sont envoyées.
-- [ ] `/Users/julie/Projects/almanea/backend/` -- Créer les endpoints FastAPI pour : `GET /users/{user_id}/notification-preferences` et `PUT /users/{user_id}/notification-preferences` -- Permet aux utilisateurs de gérer leurs préférences via l'API.
+- [ ] `/Users/julie/Projects/almanea/backend/` -- Créer les endpoints FastAPI pour : `GET /users/me/notification-preferences` et `PUT /users/me/notification-preferences` -- Permet aux utilisateurs de gérer leurs préférences via l'API.
 
 **Acceptance Criteria:**
-- Given un utilisateur authentifié, when il appelle `GET /users/{user_id}/notification-preferences`, then ses préférences de notification sont retournées.
-- Given un utilisateur authentifié, when il appelle `PUT /users/{user_id}/notification-preferences` avec un payload valide, then ses préférences sont mises à jour en base de données.
+- Given un utilisateur authentifié, when il appelle `GET /users/me/notification-preferences`, then ses préférences de notification sont retournées.
+- Given un utilisateur authentifié, when il appelle `PUT /users/me/notification-preferences` avec un payload valide, then ses préférences sont mises à jour en base de données.
 - Given un utilisateur avec `notifications_enabled=False`, when une alerte est générée, then aucune notification n'est envoyée.
 - Given un utilisateur avec `weather_alerts=False`, when une alerte météo est générée, then l'alerte n'est pas envoyée.
 - Given un utilisateur avec des préférences par défaut, when il ne modifie pas ses préférences, then les préférences par défaut sont appliquées.

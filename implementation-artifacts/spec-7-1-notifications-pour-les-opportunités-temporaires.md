@@ -40,7 +40,7 @@ context: []
 | **Préférences désactivées** | Utilisateur a désactivé `weather_alerts` | Notification non envoyée | Aucune notification |
 | **Contexte invalide** | Données manquantes (ex: AQI non disponible) | Aucune notification envoyée | Loguer l'erreur |
 | **Échec d'envoi** | Erreur lors de l'envoi de l'email | Notification marquée comme échouée | Réessayer 3 fois |
-| **Utilisateur non trouvé** | `user_id` invalide | Aucune notification envoyée | 404 si appelé via API |
+| **Utilisateur non trouvé** | Token JWT invalide | Aucune notification envoyée | 401 si non authentifié |
 
 </frozen-after-approval>
 
@@ -60,7 +60,7 @@ context: []
 - [x] `/Users/julie/Projects/almanea/backend/engines/recommendation_engine/models.py` -- Ajouter le modèle `OpportunityNotification` avec les champs : `user_id`, `message`, `opportunity_type`, `context`, `status`, `created_at` -- Structurer les données des notifications d'opportunités.
 - [x] `/Users/julie/Projects/almanea/backend/engines/recommendation_engine/opportunity_notification_service.py` -- Créer un service pour détecter les opportunités temporaires (ex: AQI excellent + météo favorable) et déclencher les notifications -- Logique métier centrale.
 - [x] `/Users/julie/Projects/almanea/backend/engines/context_engine/context_builder.py` -- Intégrer la détection d'opportunités dans la construction du contexte -- Déclencher les notifications automatiquement.
-- [x] `/Users/julie/Projects/almanea/backend/api/routers/opportunity_notifications.py` -- Créer les endpoints FastAPI pour : `GET /users/{user_id}/opportunity-notifications` (lister les notifications) -- Permet aux utilisateurs de consulter leurs notifications.
+- [x] `/Users/julie/Projects/almanea/backend/api/routers/opportunity_notifications.py` -- Créer les endpoints FastAPI pour : `GET /users/me/opportunity-notifications` (lister les notifications) -- Permet aux utilisateurs de consulter leurs notifications.
 - [x] `/Users/julie/Projects/almanea/backend/tasks/opportunity_tasks.py` -- Créer une tâche Celery `send_opportunity_notification` pour envoyer les notifications d'opportunités -- Envoi asynchrone.
 - [x] `/Users/julie/Projects/almanea/backend/main.py` -- Inclure le router `opportunity_notifications_router` -- Intègre les endpoints dans l'API.
 
@@ -69,7 +69,7 @@ context: []
 - [x] Given un utilisateur avec `notifications_enabled=False`, when une opportunité est détectée, then aucune notification n'est envoyée.
 - [x] Given un utilisateur avec `weather_alerts=False`, when une opportunité météo est détectée, then la notification n'est pas envoyée.
 - [x] Given une opportunité détectée, when l'envoi échoue, then la notification est marquée comme échouée et réessayée 3 fois.
-- [x] Given un utilisateur authentifié, when il appelle `GET /users/{user_id}/opportunity-notifications`, then la liste de ses notifications d'opportunités est retournée.
+- [x] Given un utilisateur authentifié, when il appelle `GET /users/me/opportunity-notifications`, then la liste de ses notifications d'opportunités est retournée.
 
 ## Spec Change Log
 
