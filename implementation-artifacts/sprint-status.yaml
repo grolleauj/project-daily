@@ -61,11 +61,11 @@ development_status:
   7-3-gérer-les-préférences-de-notification: done
   epic-7-retrospective: optional
 
-  epic-8: backlog
-  8-1-créer-le-layout-mobile-first: backlog
-  8-2-afficher-le-dashboard-aujourd-hui: backlog
-  8-3-afficher-les-cartes-de-recommandations: backlog
-  8-4-afficher-l-onglet-explorer: backlog
-  8-5-afficher-l-onglet-impact: backlog
-  8-6-afficher-l-onglet-profil: backlog
-  epic-8-retrospective: optional
+   epic-8: done
+   8-1-créer-le-layout-mobile-first: done
+   8-2-afficher-le-dashboard-aujourd-hui: done
+   8-3-afficher-les-cartes-de-recommandations: done
+   8-4-afficher-l-onglet-explorer: done
+   8-5-afficher-l-onglet-impact: done
+   8-6-afficher-l-onglet-profil: done
+   epic-8-retrospective: optional
